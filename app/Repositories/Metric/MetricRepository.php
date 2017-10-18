@@ -11,8 +11,8 @@
 
 namespace CachetHQ\Cachet\Repositories\Metric;
 
-use CachetHQ\Cachet\Dates\DateFactory;
 use CachetHQ\Cachet\Models\Metric;
+use CachetHQ\Cachet\Services\Dates\DateFactory;
 use DateInterval;
 
 /**
@@ -32,7 +32,7 @@ class MetricRepository
     /**
      * The date factory instance.
      *
-     * @var \CachetHQ\Cachet\Dates\DateFactory
+     * @var \CachetHQ\Cachet\Services\Dates\DateFactory
      */
     protected $dates;
 
@@ -40,7 +40,7 @@ class MetricRepository
      * Create a new metric repository class.
      *
      * @param \CachetHQ\Cachet\Repositories\Metric\MetricInterface $repository
-     * @param \CachetHQ\Cachet\Dates\DateFactory                   $dates
+     * @param \CachetHQ\Cachet\Services\Dates\DateFactory          $dates
      *
      * @return void
      */
@@ -71,7 +71,7 @@ class MetricRepository
             $pointKey = $dateTime->sub(new DateInterval('PT1M'))->format('H:i');
         }
 
-        return $points->sortBy(function ($point, $key) use ($points) {
+        return $points->sortBy(function ($point, $key) {
             return $key;
         });
     }
@@ -98,7 +98,7 @@ class MetricRepository
             $pointKey = $dateTime->sub(new DateInterval('PT1H'))->format('H:00');
         }
 
-        return $points->sortBy(function ($point, $key) use ($points) {
+        return $points->sortBy(function ($point, $key) {
             return $key;
         });
     }
@@ -124,7 +124,7 @@ class MetricRepository
             $pointKey = $dateTime->sub(new DateInterval('P1D'))->format('Y-m-d');
         }
 
-        return $points->sortBy(function ($point, $key) use ($points) {
+        return $points->sortBy(function ($point, $key) {
             return $key;
         });
     }
@@ -151,7 +151,7 @@ class MetricRepository
             $pointKey = $dateTime->sub(new DateInterval('P1D'))->format('Y-m-d');
         }
 
-        return $points->sortBy(function ($point, $key) use ($points) {
+        return $points->sortBy(function ($point, $key) {
             return $key;
         });
     }
